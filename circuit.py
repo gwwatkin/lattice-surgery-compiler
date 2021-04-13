@@ -319,6 +319,13 @@ class Circuit(object):
 
         return ret_circ
 
+    @staticmethod
+    def join(lhs: 'Circuit', rhs: 'Circuit') -> 'Circuit':
+        assert lhs.qubit_num == rhs.qubit_num
+        c = lhs.copy()
+        c.ops.extend(rhs.ops)
+        return c
+
 
 
     def count_rotations_by(self, rotation_amount : Fraction) -> int:
